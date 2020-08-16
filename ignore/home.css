@@ -6,25 +6,20 @@
         line-height: 1.6;  /* The space between lines in text */
         margin: 0;         /* To remove the space between the container and the window. */
     }
-    .nav-bar a, .main .heading, .footer .heading {
+    .nav-bar a {
         font-family: "Times New Roman", Arial, Helvetica, sans-serif;
     }
 
-
     .grid-container {
-        display: grid;
-        grid-template-areas: 'Nav'
-                            'Fig-1'
-                             'Main'
-                            'Fig-2'
-                            'Footer';
+        grid-template-areas:   'Nav'
+                              'Fig-1'
+                              'Fig-2'
+                              'Fig-3'
+                              'Fig-4'
+                              'Article'
+                              'Footer';
         margin: 0 150px;
     }
-    .grid-item {
-        /*border: 2px solid white;   !* Should be removed. For design purpose. *!*/
-    }
-
-
 
     .nav-bar {
         grid-area: Nav;
@@ -81,74 +76,53 @@
     }
 
 
-
-    .fig-1 {
-        grid-area: Fig-1;
-    }
-    .fig-1 img {
+    img {
         /* This makes all the images responsive */
-        /* If the max-width property is set to 100%, the image will scale down if it has to, but never scale up to be larger than its original size */
-        max-width: 100%;
+        width: 100%;
         height: auto;
-        /* To center an image in a container */
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
     }
 
 
-
-    .main {
-        grid-area: Main;
-        background-image: linear-gradient(black, rgba(196, 18, 114, 0.31), rgba(255, 20, 147, 0.31), black);
-        margin-top: 30px;
-    }
-    .main .heading {
-        margin-left: 150px;
-        margin-bottom: 0;
-    }
-    .main table {
-        /* To center the table in a container, and stretch it out a bit */
-        margin-left: auto;
-        margin-right: auto;
-        width: 80%;
-        padding: 40px;
-
-    }
-    .main table td {
-        border-bottom: 2px solid pink;   /* Create bottom borders only */
-        padding: 10px;        /* This increase the size of each table cell */
-    }
-    /* This last-child selector will select the last table row, and apply styling to all its table data */
-    .main table tr:last-child td {
-        border-bottom: none;
-    }
-    .schedule button {
-        background-color: black;
-        color: pink;
-        border: 3px solid pink;
-        font-size: 10px;
-        font-weight: bold;
-        padding: 10px;
-        border-radius: 12px;
-        cursor: pointer;
-        transition-duration: 0.4s;
-    }
-    .schedule button:hover {
-        background-color: pink;
-        color: black;
+    .new-album-teaser {
+        grid-area: Fig-1;
+        margin: 0;   /* To make the image take up the whole container */
     }
 
 
-
-    .fig-2 {
+    .new-album-postor {
         grid-area: Fig-2;
-        /* This centers the video inside the container */
-        text-align: center;
-        margin-top: 30px;
-        margin-bottom: 200px;
+        margin: 0;   /* To make the image take up the whole container */
     }
 
+    .how-you-like-that-mv {
+        grid-area: Fig-3;
+        text-align: center;
+    }
+    /* This canters the video too */
+    /*.how-you-like-that-mv iframe {*/
+    /*    !*display: block;*!*/
+    /*    !*margin: 0 auto;*!*/
+    /*}*/
+
+    .new-album-cover {
+        grid-area: Fig-4;
+        text-align: center;
+        margin-top: 50px;
+    }
+    .new-album-cover img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .how-you-like-that-description {
+        grid-area: Article;
+        margin-top: 50px;
+        margin-left: 150px;
+        margin-right: 150px;
+    }
+    .how-you-like-that-description p {
+        text-align: center;
+    }
 
 
 
@@ -157,7 +131,7 @@
         text-align: center;
     }
     .footer-hr {
-        margin-top: 100px;
+        margin-top: 200px;
         margin-bottom: 30px;
         box-shadow: 2px 2px 10px 1px lightpink;
     }
@@ -180,3 +154,6 @@
             width: 317px;
         }
     }
+
+
+

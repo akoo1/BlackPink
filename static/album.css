@@ -14,12 +14,12 @@
 
     .grid-container {
         display: grid;
-        grid-template-areas: ' nav   nav '
-                                     'fig-1 fig-2'
-                                     'fig-3 fig-4'
-                                     'fig-5 fig-6'
-                                     ' sec   sec '
-                                    'footer footer';
+        grid-template-areas: ' Nav   Nav '
+                             'Fig-1 Fig-2'
+                             'Fig-3 Fig-4'
+                             'Fig-5 Fig-6'
+                             ' Sec   Sec '
+                            'Footer Footer';
         grid-gap: 30px 10px;
         margin: 0 150px;
     }
@@ -28,7 +28,7 @@
     }
 
     .nav-bar {
-        grid-area: nav;
+        grid-area: Nav;
     }
     .nav-bar ul {
         list-style-type: none;    /* This removes the bullet points */
@@ -90,14 +90,18 @@
         max-width: 100%;
         height: auto;
         /* To center an image in a container */
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+        /*display: block;*/
+        /*margin-left: auto;*/
+        /*margin-right: auto;*/
+    }
+    .album {
+        /* This one line will center everything inside the container */
+        text-align: center;
     }
     .album p {
         margin-bottom: 5px;
         font-weight: bold;
-        text-align: center;
+        /*text-align: center;*/
     }
     .album .album-date {
         margin-left: 10px;
@@ -105,7 +109,7 @@
         color: lightgrey;
     }
     .album .price-container {
-        text-align: center;
+        /*text-align: center;*/
         margin-top: 8px;
     }
     .album .shop-item-price {
@@ -147,22 +151,22 @@
 
     /* Setting up the grid areas */
     .album-1 {
-        grid-area: fig-1;
+        grid-area: Fig-1;
     }
     .album-2 {
-        grid-area: fig-2;
+        grid-area: Fig-2;
     }
     .album-3 {
-        grid-area: fig-3;
+        grid-area: Fig-3;
     }
     .album-4 {
-        grid-area: fig-4;
+        grid-area: Fig-4;
     }
     .album-5 {
-        grid-area: fig-5;
+        grid-area: Fig-5;
     }
     .album-6 {
-        grid-area: fig-6;
+        grid-area: Fig-6;
     }
 
 
@@ -173,7 +177,7 @@
 
 
     .shopping-cart {
-        grid-area: sec;
+        grid-area: Sec;
         margin-top: 100px;
     }
     .shopping-cart-heading {
@@ -254,7 +258,7 @@
 
 
     .footer {
-        grid-area: footer;
+        grid-area: Footer;
         text-align: center;
     }
     .footer-hr {
@@ -270,15 +274,15 @@
     /* Responsive layout - for mobile phones */
     @media (max-width: 700px) {
         .grid-container {
-            grid-template-areas:  'nav'
-                                         'fig-1'
-                                         'fig-2'
-                                         'fig-3'
-                                         'fig-4'
-                                         'fig-5'
-                                         'fig-6'
-                                          'sec'
-                                         'footer';
+            grid-template-areas:  'Nav'
+                                 'Fig-1'
+                                 'Fig-2'
+                                 'Fig-3'
+                                 'Fig-4'
+                                 'Fig-5'
+                                 'Fig-6'
+                                  'Sec'
+                                 'Footer';
         }
         /* This media query has to be placed after the CSS property it's trying to modify */
         /* Responsive nav-bar; This makes the nav items stack on top of each other on a smaller screen */

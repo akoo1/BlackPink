@@ -12,10 +12,10 @@
 
     .container {
         display: grid;
-        grid-template-areas: '  nav     nav     nav     nav'
-                             '  sec     sec     sec    aside'
-                             ' fig-1   fig-1   fig-2   fig-2'
-                             'footer  footer  footer   footer';
+        grid-template-areas: '  Nav     Nav     Nav     Nav'
+                             '  Sec     Sec     Sec    Aside'
+                             ' Fig-1   Fig-1   Fig-2   Fig-2'
+                             'Footer  Footer  Footer   Footer';
         grid-gap: 10px;
         margin: 0 150px;
     }
@@ -27,7 +27,7 @@
 
     /* Top nav bar */
     .nav-bar {
-        grid-area: nav;
+        grid-area: Nav;
         /* Adding a background image */
         background-image: url("images/Blackpink_bg_image-2.jpg");
         background-color: rgba(0, 0, 0, 0.3);
@@ -90,7 +90,7 @@
 
 
     .sec {
-        grid-area: sec;
+        grid-area: Sec;
         padding: 0 50px 50px 0;  /* top right bottom left */
     }
     .sec .heading h1 {
@@ -110,7 +110,9 @@
         text-align: justify;
     }
 
-
+    .aside {
+        grid-area: Aside;
+    }
     .aside-container {
         padding: 20px;
         margin-top: 100px;
@@ -139,7 +141,7 @@
 
 
     .fig-1 {
-        grid-area: fig-1;
+        grid-area: Fig-1;
         /* To rotate the image right */
         transform: rotate(7deg);
         margin: 30px 0 0 0;
@@ -150,7 +152,7 @@
         padding-bottom: 10px;
     }
     .fig-2 {
-        grid-area: fig-2;
+        grid-area: Fig-2;
         /* To rotate the image left */
         transform: rotate(-8deg);
         margin: 30px 0 0 0;
@@ -184,7 +186,7 @@
 
 
     .footer {
-        grid-area: footer;
+        grid-area: Footer;
         text-align: center;
     }
     .footer .heading {
@@ -212,12 +214,12 @@
     @media (max-width: 600px) {
         /*This makes the aside, sec, fig-1,2 stack on top of each other instead of next to each other */
         .container {
-            grid-template-areas: ' nav'
-                                 'aside'
-                                  'sec'
-                                 'fig-1'
-                                 'fig-2'
-                                 'footer';
+            grid-template-areas: ' Nav'
+                                 'Aside'
+                                  'Sec'
+                                 'Fig-1'
+                                 'Fig-2'
+                                 'Footer';
         }
         /* This media query has to be placed after the CSS property it's trying to modify */
         /* Responsive nav-bar; This makes the nav items stack on top of each other on a smaller screen */

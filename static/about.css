@@ -1,0 +1,231 @@
+
+    body {
+        background-color: #000000;
+        color: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.6;  /* The space between lines in text. This somehow also removed the little gap between the each nav item and the background */
+        margin: 0;         /* To remove the space between the container and the window. */
+    }
+    .nav-bar a, .sec .heading, .footer .heading {
+        font-family: "Times New Roman", Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+        display: grid;
+        grid-template-areas: '  nav     nav     nav     nav'
+                             '  sec     sec     sec    aside'
+                             ' fig-1   fig-1   fig-2   fig-2'
+                             'footer  footer  footer   footer';
+        grid-gap: 10px;
+        margin: 0 150px;
+    }
+    .grid-item {
+        /*border: 2px solid white;*/  /* Should be removed. For design purpose. */
+    }
+
+
+
+    /* Top nav bar */
+    .nav-bar {
+        grid-area: nav;
+        /* Adding a background image */
+        background-image: url("images/Blackpink_bg_image-2.jpg");
+        background-color: rgba(0, 0, 0, 0.3);
+        background-blend-mode: multiply;      /* This property can combine the two bg, bg-image and bg-color. By default, the browser only reads one bg. */
+        background-size: cover;
+        background-position: center;   /* This makes the bg image responsive */
+        height: 550px;   /* Must set a height or else the height will still be the height of the nav bar */
+    }
+    .nav-bar ul {
+        list-style-type: none;    /* This removes the bullet points */
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: pink;
+    }
+    .nav-bar li {
+        float: left;
+    }
+    .nav-bar a {
+        display: block;
+        color: black;
+        text-decoration: none;
+        text-align: center;
+        font-weight: bold;
+        padding: 15px;
+    }
+    /* Change the background-color of the links and dropdown button on hover, even hovering on dropdown items */
+    .nav-bar a:hover, .dropdown:hover .dropbtn {
+        background-color: #454242;
+        color: pink;
+        text-decoration: none;
+    }
+    /* The 4 links as a whole inside the dropdown. Hidden at first. */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        min-width: 160px;
+        box-shadow: 5px 5px 20px 0 lightpink;
+        /* This makes the dropdown content stay on top of all other elements */
+        z-index: 1;
+    }
+    /* The links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        background-color: #f9f9f9;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+    /* Display the dropdown-content when hover over dropdown link */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    /* Change the background-color of dropdown links on hover */
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+
+
+    .sec {
+        grid-area: sec;
+        padding: 0 50px 50px 0;  /* top right bottom left */
+    }
+    .sec .heading h1 {
+        font-size: 35px;
+        margin-bottom: 0;
+        text-shadow: 4px 4px 4px pink;
+    }
+    .sec hr {
+        border: 1px solid pink;
+        margin-top: 10px;
+        margin-bottom: 40px;
+        box-shadow: 2px 2px 10px 3px lightpink;
+    }
+    .sec p {
+        text-indent: 30px;
+        /* Each line is stretched so that every line has equal width */
+        text-align: justify;
+    }
+
+
+    .aside-container {
+        padding: 20px;
+        margin-top: 100px;
+        background-color: #323030;
+    }
+    .aside-container figure {
+        margin: 0;
+    }
+    .aside-container figcaption {
+        padding: 0;
+        line-height: 1.2;
+    }
+    .aside-container .heading-1, .heading-2 {
+        text-align: center;
+        color: black;
+        background-color: pink;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+    .aside-container table {
+        width: 100%;
+        font-size: small;
+        text-align: left;
+    }
+
+
+
+    .fig-1 {
+        grid-area: fig-1;
+        /* To rotate the image right */
+        transform: rotate(7deg);
+        margin: 30px 0 0 0;
+    }
+    /* For rotation */
+    .fig-1 img {
+        float: right;
+        padding-bottom: 10px;
+    }
+    .fig-2 {
+        grid-area: fig-2;
+        /* To rotate the image left */
+        transform: rotate(-8deg);
+        margin: 30px 0 0 0;
+    }
+    /* For rotation */
+    .fig-2 img {
+        float: left;
+        padding-bottom: 10px;
+    }
+    img {
+        /* This makes all the images responsive */
+        /* If the max-width property is set to 100%, the image will scale down if it has to, but never scale up to be larger than its original size */
+        max-width: 100%;
+        height: auto;
+        /*!* To center an image in a container *!*/
+        /*display: block;*/
+        /*margin-left: auto;*/
+        /*margin-right: auto;*/
+    }
+    .fig-1 img, .fig-2 img {
+        /* This rounds the corners of the images */
+        border-radius: 10%;
+    }
+    figcaption {
+        text-align: center;
+        font-style: italic;
+        padding: 110px;     /* To fit the figcaption right below the image after rotation */
+    }
+
+
+
+
+    .footer {
+        grid-area: footer;
+        text-align: center;
+    }
+    .footer .heading {
+        text-align: left;
+        margin-bottom: 0;
+        margin-top: 400px;
+    }
+    .footer p {
+        text-align: left;
+        margin-top: 0;
+    }
+    .footer-hr {
+        margin-top: 300px;
+        margin-bottom: 30px;
+        box-shadow: 2px 2px 10px 1px lightpink;
+    }
+    .icons {
+        padding: 20px;
+    }
+
+
+
+
+    /* Responsive layout - for mobile phones */
+    @media (max-width: 600px) {
+        /*This makes the aside, sec, fig-1,2 stack on top of each other instead of next to each other */
+        .container {
+            grid-template-areas: ' nav'
+                                 'aside'
+                                  'sec'
+                                 'fig-1'
+                                 'fig-2'
+                                 'footer';
+        }
+        /* This media query has to be placed after the CSS property it's trying to modify */
+        /* Responsive nav-bar; This makes the nav items stack on top of each other on a smaller screen */
+        .nav-bar li {
+            float: none;
+        }
+        /* Adjust the width of the dropdown items */
+        .nav-bar .dropdown-content {
+            width: 317px;
+        }
+    }

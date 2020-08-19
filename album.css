@@ -99,6 +99,9 @@
         .nav-bar a {
             display: none;
         }
+        .nav-bar .home-link {
+            display: block;
+        }
         .nav-bar .hamburger {
             float: right;
         }

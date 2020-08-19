@@ -6,7 +6,7 @@
     <title> BlackPink | Concert </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="concert.css" rel="stylesheet">
+    <link href="../static/concert.css" rel="stylesheet">
 
     <!-- Linking some icons from the internet -->
     <script src="https://kit.fontawesome.com/c5edb75a02.js" crossorigin="anonymous"></script>
@@ -21,26 +21,28 @@
 <body>
 
     <div class="grid-container">
-        <nav class="grid-item nav-bar">
+        <nav class="nav-bar" id="my-nav-bar">
             <ul>
-                <li> <a href="index.html"> Home </a> </li>
-                <li> <a href="concert.html"> Concert </a> </li>
-                <li> <a href="album.html"> Album </a> </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropbtn"> Members &#9662; </a>
-                    <div class="dropdown-content">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="concert.html">Concert</a></li>
+                <li><a href="album.html">Album</a></li>
+                <li class="dropdown-link">
+                    <a href="#" class="dropbtn">Members &#9662;</a>
+                    <div class="dropdown-links">
                         <a href="https://www.instagram.com/jennierubyjane/" target="_blank"> Jennie </a>
                         <a href="#"> Lisa </a>
                         <a href="#"> Jisoo </a>
                         <a href="#"> Rose </a>
                     </div>
                 </li>
+
+                <li class="hamburger"><a href="#" onclick="hamburger_clicked()"><i class="fa fa-bars"></i></a></li>
             </ul>
         </nav>
 
 
         <figure class="grid-item fig-1">
-            <img src="images/Blackpink_tour_postor.jpg" alt="tour-postor" width="500" height="250">
+            <img src="../static/images/Blackpink_tour_postor.jpg" alt="tour-postor" width="500" height="250">
         </figure>
 
         <main class="grid-item main">
@@ -114,6 +116,25 @@
             <small style="padding-bottom: 50px"> Copyright &copy; 2020 Alfred </small>
         </footer>
     </div>
+
+
+
+
+    <script>
+        function hamburger_clicked() {
+
+            var x = document.getElementById("my-nav-bar");
+            // To open the nav menu
+            if (x.className === "nav-bar") {
+                x.className += " responsive";
+
+            }
+            // To close the nav menu
+            else {
+                x.className = "nav-bar";
+            }
+        }
+    </script>
 
 </body>
 

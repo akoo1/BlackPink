@@ -11,7 +11,8 @@
         font-family: "Times New Roman", Arial, Helvetica, sans-serif;
     }
 
-
+    /* The grid-template-area gives you a visual representation of the web-page layout, and we then put our content
+       into those different grid cells by assigning a piece of content a grid-area name we just defined */
     .grid-container {
         display: grid;
         grid-template-areas: ' Nav   Nav '
@@ -21,7 +22,7 @@
                              ' Sec   Sec '
                             'Footer Footer';
         grid-gap: 30px 10px;
-        margin: 0 150px;
+        /*margin: 0 150px;*/
     }
     .grid-item {
         /*border: 1px solid white;*/
@@ -29,6 +30,9 @@
 
     .nav-bar {
         grid-area: Nav;
+        /* Make the nav bar stay at the top when scrolling */
+        position: fixed;
+        width: 100%;
     }
     .nav-bar ul {
         list-style-type: none;    /* This removes the bullet points */
@@ -36,7 +40,11 @@
         padding: 0;
         overflow: hidden;
         background-color: pink;
+        border-radius: 0 0 8px 8px;
     }
+
+
+    /* The nested anchor tags cannot have float left */
     .nav-bar li {
         float: left;
     }
@@ -48,37 +56,77 @@
         font-weight: bold;
         padding: 15px;
     }
-    /* Change the background-color of the links and dropdown button on hover, even hovering on dropdown items */
-    .nav-bar a:hover, .dropdown:hover .dropbtn {
+    /* Change the background-color of the links and dropdown button on hover, even hovering on dropdown links */
+    .nav-bar a:hover, .dropdown-link:hover .dropbtn {
         background-color: #454242;
         color: pink;
         text-decoration: none;
     }
-    /* The 4 links as a whole inside the dropdown. Hidden at first. */
-    .dropdown-content {
+    /* The 4 links as a whole inside the dropdown-link. Hidden at first. */
+    .dropdown-links {
         display: none;
         position: absolute;
         min-width: 160px;
         box-shadow: 5px 5px 20px 0 lightpink;
-        /* This makes the dropdown content stay on top of all other elements */
+        /* This makes the dropdown links stay on top of all other elements */
         z-index: 1;
     }
     /* The links inside the dropdown */
-    .dropdown-content a {
+    .dropdown-links a {
+        display: block;
         color: black;
         background-color: #f9f9f9;
         padding: 12px 16px;
         text-decoration: none;
-        display: block;
         text-align: left;
     }
-    /* Display the dropdown-content when hover over dropdown link */
-    .dropdown:hover .dropdown-content {
+    /* Display the dropdown links when hover over dropdown link */
+    .dropdown-link:hover .dropdown-links {
         display: block;
     }
     /* Change the background-color of dropdown links on hover */
-    .dropdown-content a:hover {
+    .dropdown-links a:hover {
         background-color: #f1f1f1;
+    }
+
+
+    .nav-bar .hamburger a {
+        display: none;
+    }
+
+    @media screen and (max-width: 600px) {
+        /* This selects all the anchor elements in the nav bar except for the first one */
+        .nav-bar a {
+            display: none;
+        }
+        .nav-bar .hamburger {
+            float: right;
+        }
+        .nav-bar .hamburger a {
+            display: block;
+        }
+    }
+
+    /* When the hamburger is clicked */
+    @media screen and (max-width: 600px) {
+        /*.nav-bar.responsive {*/
+        /*    position: relative;*/
+        /*}*/
+        .dropdown-links {
+            position: relative;
+        }
+        .nav-bar.responsive .hamburger a {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .nav-bar.responsive li {
+            float: none;
+        }
+        .nav-bar.responsive a {
+            display: block;
+            text-align: left;
+        }
     }
 
 
@@ -95,8 +143,10 @@
         /*margin-right: auto;*/
     }
     .album {
-        /* This one line will center everything inside the container */
+        /* This one line will center every single element inside the grid-cell */
         text-align: center;
+        /*justify-self: center;*/   /* This will only center the grid-cell itself, not the elements inside it */
+
     }
     .album p {
         margin-bottom: 5px;
@@ -124,11 +174,11 @@
         border: none;
         padding: 4px;   /* This controls the size of the button */
     }
-    .album .price button:hover, .purchase-btn:hover {
+    .album .add-to-cart-btn:hover, .purchase-btn:hover {
         background-color: lightskyblue;
     }
     /* Create an animated "pressed" effect on click */
-    .album .price button:active, .purchase-btn:active {
+    .album .add-to-cart-btn:active, .purchase-btn:active {
         background-color: lightgrey;
         box-shadow: 0 5px #666;
         transform: translateY(4px);
@@ -185,9 +235,6 @@
         text-shadow: 4px 4px 4px pink;
         text-align: center;  /* To center a heading in a container is straightforward */
     }
-    .shopping-cart .cart-total-hr {
-        width: 50%;
-    }
     .shopping-cart table {
         /* To center the table in a container, and stretch it out a bit */
         margin-left: auto;
@@ -204,13 +251,16 @@
     }
     .shopping-cart table td {
         padding: 10px;
-        /*border-bottom: 2px solid pink;*/
         text-align: center;
     }
     /* This last-child selector will select the last table row, and apply styling to all its table data */
     /* To add a border-bottom to only the last row */
     .shopping-cart table tr:last-child td {
         border-bottom: 2px solid pink;
+    }
+
+    .shopping-cart .cart-item-name {
+        margin-top: 0;
     }
 
     .shopping-cart .cart-quantity-input {
@@ -272,7 +322,7 @@
 
 
     /* Responsive layout - for mobile phones */
-    @media (max-width: 700px) {
+    @media (max-width: 600px) {
         .grid-container {
             grid-template-areas:  'Nav'
                                  'Fig-1'
@@ -283,15 +333,6 @@
                                  'Fig-6'
                                   'Sec'
                                  'Footer';
-        }
-        /* This media query has to be placed after the CSS property it's trying to modify */
-        /* Responsive nav-bar; This makes the nav items stack on top of each other on a smaller screen */
-        .nav-bar li {
-            float: none;
-        }
-        /* Adjust the width of the dropdown items */
-        .nav-bar .dropdown-content {
-            width: 317px;
         }
         /* To make sure the figures align with each other on a smaller screen */
         .album-1, .album-3, .album-5 {

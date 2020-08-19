@@ -1,7 +1,8 @@
 
+
     body {
         background-color: #000000;
-        color: #ffffff;
+        color: rgba(255, 255, 255, 0.83);
         font-family: Arial, Helvetica, sans-serif;
         line-height: 1.6;  /* The space between lines in text. This somehow also removed the little gap between the each nav item and the background */
         margin: 0;         /* To remove the space between the container and the window. */
@@ -10,6 +11,8 @@
         font-family: "Times New Roman", Arial, Helvetica, sans-serif;
     }
 
+    /* The grid-template-area gives you a visual representation of the web-page layout, and we then put our content
+       into those different grid cells by assigning a piece of content a grid-area name we just defined */
     .container {
         display: grid;
         grid-template-areas: '  Nav     Nav     Nav     Nav'
@@ -17,7 +20,7 @@
                              ' Fig-1   Fig-1   Fig-2   Fig-2'
                              'Footer  Footer  Footer   Footer';
         grid-gap: 10px;
-        margin: 0 150px;
+        /*margin: 0 150px;*/
     }
     .grid-item {
         /*border: 2px solid white;*/  /* Should be removed. For design purpose. */
@@ -35,6 +38,9 @@
         background-size: cover;
         background-position: center;   /* This makes the bg image responsive */
         height: 550px;   /* Must set a height or else the height will still be the height of the nav bar */
+        /* Make the nav bar stay at the top when scrolling */  /* The background-image will move too lol */
+        /*position: fixed;*/
+        /*width: 100%;*/
     }
     .nav-bar ul {
         list-style-type: none;    /* This removes the bullet points */
@@ -42,7 +48,11 @@
         padding: 0;
         overflow: hidden;
         background-color: pink;
+        border-radius: 0 0 8px 8px;
     }
+
+
+    /* The nested anchor tags cannot have float left */
     .nav-bar li {
         float: left;
     }
@@ -54,44 +64,87 @@
         font-weight: bold;
         padding: 15px;
     }
-    /* Change the background-color of the links and dropdown button on hover, even hovering on dropdown items */
-    .nav-bar a:hover, .dropdown:hover .dropbtn {
+    /* Change the background-color of the links and dropdown button on hover, even hovering on dropdown links */
+    .nav-bar a:hover, .dropdown-link:hover .dropbtn {
         background-color: #454242;
         color: pink;
         text-decoration: none;
     }
-    /* The 4 links as a whole inside the dropdown. Hidden at first. */
-    .dropdown-content {
+    /* The 4 links as a whole inside the dropdown-link. Hidden at first. */
+    .dropdown-links {
         display: none;
         position: absolute;
         min-width: 160px;
         box-shadow: 5px 5px 20px 0 lightpink;
-        /* This makes the dropdown content stay on top of all other elements */
+        /* This makes the dropdown links stay on top of all other elements */
         z-index: 1;
     }
     /* The links inside the dropdown */
-    .dropdown-content a {
+    .dropdown-links a {
+        display: block;
         color: black;
         background-color: #f9f9f9;
         padding: 12px 16px;
         text-decoration: none;
-        display: block;
         text-align: left;
     }
-    /* Display the dropdown-content when hover over dropdown link */
-    .dropdown:hover .dropdown-content {
+    /* Display the dropdown links when hover over dropdown link */
+    .dropdown-link:hover .dropdown-links {
         display: block;
     }
     /* Change the background-color of dropdown links on hover */
-    .dropdown-content a:hover {
+    .dropdown-links a:hover {
         background-color: #f1f1f1;
     }
 
 
+    .nav-bar .hamburger a {
+        display: none;
+    }
 
+    @media screen and (max-width: 600px) {
+        /* This selects all the anchor elements in the nav bar except for the first one */
+        .nav-bar a {
+            display: none;
+        }
+        .nav-bar .hamburger {
+            float: right;
+        }
+        .nav-bar .hamburger a {
+            display: block;
+        }
+    }
+
+    /* When the hamburger is clicked */
+    @media screen and (max-width: 600px) {
+        /*.nav-bar.responsive {*/
+        /*    position: relative;*/
+        /*}*/
+        .dropdown-links {
+            position: relative;
+        }
+        .nav-bar.responsive .hamburger a {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .nav-bar.responsive li {
+            float: none;
+        }
+        .nav-bar.responsive a {
+            display: block;
+            text-align: left;
+        }
+    }
+
+
+
+
+    
     .sec {
         grid-area: Sec;
         padding: 0 50px 50px 0;  /* top right bottom left */
+        margin-left: 150px;
     }
     .sec .heading h1 {
         font-size: 35px;
@@ -112,11 +165,13 @@
 
     .aside {
         grid-area: Aside;
+        padding-right: 150px;
     }
     .aside-container {
         padding: 20px;
         margin-top: 100px;
         background-color: #323030;
+        border-radius: 4px;
     }
     .aside-container figure {
         margin: 0;
@@ -179,7 +234,17 @@
     figcaption {
         text-align: center;
         font-style: italic;
-        padding: 110px;     /* To fit the figcaption right below the image after rotation */
+        padding: 110px;
+    }
+    .fig-1 figcaption {
+        float: right;
+        padding-top: 0;
+        padding-right: 50px;
+    }
+    .fig-2 figcaption {
+        float: left;
+        padding-top: 0;
+        padding-left: 50px;
     }
 
 
@@ -189,15 +254,12 @@
         grid-area: Footer;
         text-align: center;
     }
-    .footer .heading {
+    .footer .reference {
         text-align: left;
         margin-bottom: 0;
         margin-top: 400px;
-    }
-    .footer p {
-        text-align: left;
-        margin-top: 0;
-    }
+        margin-left: 150px;
+    }  
     .footer-hr {
         margin-top: 300px;
         margin-bottom: 30px;
@@ -220,14 +282,5 @@
                                  'Fig-1'
                                  'Fig-2'
                                  'Footer';
-        }
-        /* This media query has to be placed after the CSS property it's trying to modify */
-        /* Responsive nav-bar; This makes the nav items stack on top of each other on a smaller screen */
-        .nav-bar li {
-            float: none;
-        }
-        /* Adjust the width of the dropdown items */
-        .nav-bar .dropdown-content {
-            width: 317px;
         }
     }

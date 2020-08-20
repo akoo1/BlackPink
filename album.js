@@ -118,7 +118,7 @@ function add_item_to_cart(image_src, name, price) {
     }
 
     cart_row.innerHTML = `
-            <td><img src="${image_src}" width="50" height="50" alt="How you like that album"><span class="cart-item-name">${name}</span></td>
+            <td><img src="${image_src}" width="50" height="50" alt="How you like that album"><p class="cart-item-name">${name}</p></td>
             <td class="cart-item-price"> ${price} </td>
             <td><input class="cart-quantity-input" type="number" value="1"><button class="danger-btn">REMOVE</button></td>`
     cart_items.append(cart_row)

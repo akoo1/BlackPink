@@ -246,7 +246,6 @@
         /* This controls the spacing between the table cells */
         /* The first value sets the horizontal spacing and the second value sets the vertical spacing */
         border-spacing: 0 0;  /* border-collapse: collapse;  will have the same effect */
-
     }
     .shopping-cart table th {
         background-color: pink;

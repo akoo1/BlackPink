@@ -35,7 +35,7 @@
                     </div>
                 </li>
 
-                <li class="hamburger"><a href="#" onclick="hamburger_clicked()"><i class="fa fa-bars"></i></a></li>
+                <li class="hamburger"><a href="#" class="hamburger-link" ><i class="fa fa-bars"></i></a></li>
             </ul>
         </nav>
 
@@ -147,6 +147,8 @@
 
 
     <script>
+        document.getElementsByClassName('hamburger-link')[0].addEventListener('click', hamburger_clicked)
+
         function hamburger_clicked() {
 
             var x = document.getElementById("my-nav-bar");
